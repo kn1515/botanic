@@ -77,7 +77,7 @@ class PlantCard extends StatelessWidget {
                           ),
                           decoration: BoxDecoration(
                             color: _getCategoryColors(plant.category)[0]
-                                .withOpacity(0.15),
+                                .withValues(alpha: 0.15),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Text(

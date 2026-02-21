@@ -111,7 +111,7 @@ class PlantDetailScreen extends StatelessWidget {
   Widget _buildInfoHeader(ThemeData theme) {
     return Card(
       elevation: 0,
-      color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.5),
+      color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Row(
@@ -141,7 +141,7 @@ class PlantDetailScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
                 color: _getCategoryGradient(plant.category)[0]
-                    .withOpacity(0.3),
+                    .withValues(alpha: 0.3),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(
@@ -187,7 +187,7 @@ class PlantDetailScreen extends StatelessWidget {
   Widget _buildBasicInfo(ThemeData theme) {
     return Card(
       elevation: 0,
-      color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.3),
+      color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -242,7 +242,7 @@ class PlantDetailScreen extends StatelessWidget {
         return Chip(
           label: Text(char),
           backgroundColor:
-              theme.colorScheme.primaryContainer.withOpacity(0.5),
+              theme.colorScheme.primaryContainer.withValues(alpha: 0.5),
           side: BorderSide.none,
           padding: const EdgeInsets.symmetric(horizontal: 4),
         );
@@ -255,7 +255,7 @@ class PlantDetailScreen extends StatelessWidget {
 
     return Card(
       elevation: 0,
-      color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.3),
+      color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -298,7 +298,7 @@ class PlantDetailScreen extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: theme.colorScheme.primaryContainer.withOpacity(0.3),
+                color: theme.colorScheme.primaryContainer.withValues(alpha: 0.3),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Column(

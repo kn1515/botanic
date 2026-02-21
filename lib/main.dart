@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'screens/plant_list_screen.dart';
 
 void main() {
-  runApp(const BotanicApp());
+  runApp(const ProviderScope(child: BotanicApp()));
 }
 
 class BotanicApp extends StatelessWidget {

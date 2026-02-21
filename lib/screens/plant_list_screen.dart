@@ -1,43 +1,21 @@
 import 'package:flutter/material.dart';
-import '../data/plant_data.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/plant.dart';
+import '../providers/plant_providers.dart';
 import '../widgets/plant_card.dart';
 import '../widgets/category_filter.dart';
 import 'plant_detail_screen.dart';
 
 /// 植物一覧画面
-class PlantListScreen extends StatefulWidget {
+class PlantListScreen extends ConsumerStatefulWidget {
   const PlantListScreen({super.key});
 
   @override
-  State<PlantListScreen> createState() => _PlantListScreenState();
+  ConsumerState<PlantListScreen> createState() => _PlantListScreenState();
 }
 
-class _PlantListScreenState extends State<PlantListScreen> {
-  PlantCategory? _selectedCategory;
-  String _searchQuery = '';
-  bool _isSearching = false;
+class _PlantListScreenState extends ConsumerState<PlantListScreen> {
   final _searchController = TextEditingController();
-
-  List<Plant> get _filteredPlants {
-    List<Plant> plants = PlantData.allPlants;
-
-    if (_selectedCategory != null) {
-      plants = plants.where((p) => p.category == _selectedCategory).toList();
-    }
-
-    if (_searchQuery.isNotEmpty) {
-      plants = plants.where((p) {
-        final query = _searchQuery.toLowerCase();
-        return p.name.toLowerCase().contains(query) ||
-            p.scientificName.toLowerCase().contains(query) ||
-            p.family.toLowerCase().contains(query) ||
-            p.description.toLowerCase().contains(query);
-      }).toList();
-    }
-
-    return plants;
-  }
 
   @override
   void dispose() {
@@ -47,11 +25,12 @@ class _PlantListScreenState extends State<PlantListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final plants = _filteredPlants;
+    final plants = ref.watch(filteredPlantsProvider);
+    final isSearching = ref.watch(isSearchingProvider);
 
     return Scaffold(
       appBar: AppBar(
-        title: _isSearching
+        title: isSearching
             ? TextField(
                 controller: _searchController,
                 autofocus: true,
@@ -61,24 +40,21 @@ class _PlantListScreenState extends State<PlantListScreen> {
                   hintStyle: TextStyle(fontWeight: FontWeight.normal),
                 ),
                 onChanged: (value) {
-                  setState(() {
-                    _searchQuery = value;
-                  });
+                  ref.read(searchQueryProvider.notifier).update(value);
                 },
               )
             : const Text('🌿 植物図鑑'),
-        centerTitle: !_isSearching,
+        centerTitle: !isSearching,
         actions: [
           IconButton(
-            icon: Icon(_isSearching ? Icons.close : Icons.search),
+            icon: Icon(isSearching ? Icons.close : Icons.search),
             onPressed: () {
-              setState(() {
-                if (_isSearching) {
-                  _searchQuery = '';
-                  _searchController.clear();
-                }
-                _isSearching = !_isSearching;
-              });
+              final wasSearching = ref.read(isSearchingProvider);
+              if (wasSearching) {
+                ref.read(searchQueryProvider.notifier).clear();
+                _searchController.clear();
+              }
+              ref.read(isSearchingProvider.notifier).toggle();
             },
           ),
         ],
@@ -88,11 +64,9 @@ class _PlantListScreenState extends State<PlantListScreen> {
           const SizedBox(height: 8),
           // カテゴリフィルター
           CategoryFilter(
-            selectedCategory: _selectedCategory,
+            selectedCategory: ref.watch(selectedCategoryProvider),
             onCategorySelected: (category) {
-              setState(() {
-                _selectedCategory = category;
-              });
+              ref.read(selectedCategoryProvider.notifier).select(category);
             },
           ),
           const SizedBox(height: 8),
