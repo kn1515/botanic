@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../models/plant.dart';
 
@@ -36,15 +37,39 @@ class PlantDetailScreen extends StatelessWidget {
                     colors: _getCategoryGradient(plant.category),
                   ),
                 ),
-                child: Center(
-                  child: Hero(
-                    tag: 'plant_${plant.id}',
-                    child: Text(
-                      plant.emoji,
-                      style: const TextStyle(fontSize: 100),
-                    ),
-                  ),
-                ),
+                child: plant.imageUrl != null
+                    ? CachedNetworkImage(
+                        imageUrl: plant.imageUrl!,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        placeholder: (context, url) => Center(
+                          child: Hero(
+                            tag: 'plant_${plant.id}',
+                            child: Text(
+                              plant.emoji,
+                              style: const TextStyle(fontSize: 100),
+                            ),
+                          ),
+                        ),
+                        errorWidget: (context, url, error) => Center(
+                          child: Hero(
+                            tag: 'plant_${plant.id}',
+                            child: Text(
+                              plant.emoji,
+                              style: const TextStyle(fontSize: 100),
+                            ),
+                          ),
+                        ),
+                      )
+                    : Center(
+                        child: Hero(
+                          tag: 'plant_${plant.id}',
+                          child: Text(
+                            plant.emoji,
+                            style: const TextStyle(fontSize: 100),
+                          ),
+                        ),
+                      ),
               ),
             ),
           ),

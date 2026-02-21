@@ -11,6 +11,7 @@ class Plant {
   final PlantCategory category;
   final List<String> characteristics;
   final CareInfo careInfo;
+  final String? imageUrl;
 
   const Plant({
     required this.id,
@@ -24,6 +25,7 @@ class Plant {
     required this.category,
     required this.characteristics,
     required this.careInfo,
+    this.imageUrl,
   });
 }
 

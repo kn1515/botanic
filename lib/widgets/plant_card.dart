@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../models/plant.dart';
 
@@ -25,7 +26,7 @@ class PlantCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // 絵文字エリア
+            // 画像エリア（PlantPhotoAI画像 or 絵文字フォールバック）
             Container(
               height: 120,
               decoration: BoxDecoration(
@@ -35,12 +36,29 @@ class PlantCard extends StatelessWidget {
                   colors: _getCategoryColors(plant.category),
                 ),
               ),
-              child: Center(
-                child: Text(
-                  plant.emoji,
-                  style: const TextStyle(fontSize: 56),
-                ),
-              ),
+              child: plant.imageUrl != null
+                  ? CachedNetworkImage(
+                      imageUrl: plant.imageUrl!,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => Center(
+                        child: Text(
+                          plant.emoji,
+                          style: const TextStyle(fontSize: 56),
+                        ),
+                      ),
+                      errorWidget: (context, url, error) => Center(
+                        child: Text(
+                          plant.emoji,
+                          style: const TextStyle(fontSize: 56),
+                        ),
+                      ),
+                    )
+                  : Center(
+                      child: Text(
+                        plant.emoji,
+                        style: const TextStyle(fontSize: 56),
+                      ),
+                    ),
             ),
             // 情報エリア
             Expanded(
