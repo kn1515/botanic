@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'screens/plant_list_screen.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: BotanicApp()));
@@ -54,7 +54,7 @@ class BotanicApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const PlantListScreen(),
+      home: const HomeScreen(),
     );
   }
 }

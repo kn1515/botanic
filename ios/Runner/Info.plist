@@ -66,5 +66,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>植物の発見場所を地図に登録するために位置情報を使用します</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>植物の発見場所を地図に登録するために位置情報を使用します</string>
 </dict>
 </plist>
