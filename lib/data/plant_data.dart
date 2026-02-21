@@ -97,6 +97,8 @@ class PlantData {
       name: 'アジサイ',
       scientificName: 'Hydrangea macrophylla',
       family: 'アジサイ科',
+      imageUrl:
+          'https://api.plantphotoai.com/storage/v1/object/public/images/92264365bd369cd78a49c765b27633fbb998b10c.png',
       description:
           '梅雨の季節を彩る日本原産の花木です。土壌の酸性度によって花の色が変化する'
           '不思議な性質を持っています。酸性土壌では青色、アルカリ性土壌ではピンク色になります。'
@@ -211,6 +213,8 @@ class PlantData {
       name: 'エケベリア',
       scientificName: 'Echeveria elegans',
       family: 'ベンケイソウ科',
+      imageUrl:
+          'https://api.plantphotoai.com/storage/v1/object/public/images/527cc1ce3116c2c9d133f18d0bab9a1f03b01616.png',
       description:
           'ロゼット状に広がる肉厚の葉が美しい多肉植物。メキシコ原産で、'
           '100種以上の原種と多数の園芸品種があります。'
@@ -255,6 +259,8 @@ class PlantData {
       name: 'ハオルチア',
       scientificName: 'Haworthia obtusa',
       family: 'ススキノキ科',
+      imageUrl:
+          'https://api.plantphotoai.com/storage/v1/object/public/images/f97a9e1da9619e3a6b5f63558494c185bc5306c1.png',
       description:
           '透明感のある葉先が光を通す「窓」を持つ、小型の多肉植物。'
           '南アフリカ原産で、自生地では体の大部分を土中に埋め、'
@@ -279,6 +285,8 @@ class PlantData {
       name: 'バジル',
       scientificName: 'Ocimum basilicum',
       family: 'シソ科',
+      imageUrl:
+          'https://api.plantphotoai.com/storage/v1/object/public/images/35411487bf8c2990c20119ceccd30f392b6f3a05.png',
       description:
           'イタリア料理に欠かせないハーブの代表格。甘くスパイシーな香りが特徴で、'
           'トマトとの相性が抜群です。和名は「メボウキ」。'
@@ -323,6 +331,8 @@ class PlantData {
       name: 'ミント',
       scientificName: 'Mentha × piperita',
       family: 'シソ科',
+      imageUrl:
+          'https://api.plantphotoai.com/storage/v1/object/public/images/dea9e55c996e2baa691440e31070731d29609c91.png',
       description:
           'スーッとする爽やかな香りが特徴の多年草ハーブ。料理、飲料、アロマなど'
           '用途は幅広く、最も身近なハーブの一つです。'
@@ -345,6 +355,8 @@ class PlantData {
       name: 'ローズマリー',
       scientificName: 'Salvia rosmarinus',
       family: 'シソ科',
+      imageUrl:
+          'https://api.plantphotoai.com/storage/v1/object/public/images/482d9e572fd8b34c0ac654c1afaa7f4d4d07421f.png',
       description:
           '清々しい強い香りを持つ常緑低木のハーブ。肉料理の臭み消しに重宝され、'
           '記憶力を高める効果があるとされ「記憶のハーブ」とも呼ばれます。'
@@ -369,6 +381,8 @@ class PlantData {
       name: 'ボストンファーン',
       scientificName: 'Nephrolepis exaltata',
       family: 'シノブ科',
+      imageUrl:
+          'https://api.plantphotoai.com/storage/v1/object/public/images/08861d4d466e400e5fa13d4fc753b621d9328f9d.png',
       description:
           '優雅に垂れ下がる葉が美しい、室内観葉植物として人気のシダ植物。'
           'NASAの空気清浄研究でも効果が認められ、'
@@ -415,6 +429,8 @@ class PlantData {
       name: 'モンステラ',
       scientificName: 'Monstera deliciosa',
       family: 'サトイモ科',
+      imageUrl:
+          'https://api.plantphotoai.com/storage/v1/object/public/images/b4bd2fe96fe662fb6de43f5624cebeb163939efe.png',
       description:
           '大きな切れ込みの入った葉が印象的な、人気の観葉植物。'
           '中央アメリカの熱帯雨林原産で、自生地では大木に絡みついて成長します。'
