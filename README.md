@@ -65,10 +65,64 @@ dart run build_runner build --delete-conflicting-outputs
 
 # 静的解析
 flutter analyze
-
-# アプリの実行
-flutter run
 ```
+
+## 起動方法
+
+### Web
+
+```bash
+# デバッグモードで起動（Chrome が自動で開きます）
+flutter run -d chrome
+
+# ポートを指定してサーバーモードで起動する場合
+flutter run -d web-server --web-port=8080
+
+# リリースビルドを生成する場合
+flutter build web
+# 成果物は build/web/ に出力されます
+```
+
+### iOS
+
+> 前提: macOS + Xcode がインストール済みであること
+
+```bash
+# シミュレータで起動
+flutter run -d ios
+
+# 特定のシミュレータを指定する場合（利用可能なデバイス一覧を確認）
+flutter devices
+flutter run -d "iPhone 16 Pro"
+
+# 実機で起動（Apple Developer アカウント & プロビジョニングプロファイルが必要）
+flutter run -d <実機デバイスID> --release
+```
+
+初回は `ios/Runner.xcworkspace` を Xcode で開き、Signing & Capabilities でチーム（Apple Developer アカウント）を設定してください。
+
+### Android
+
+> 前提: Android Studio + Android SDK がインストール済みであること
+
+```bash
+# エミュレータで起動
+flutter run -d android
+
+# 利用可能なデバイス一覧を確認
+flutter devices
+
+# 特定のエミュレータ／実機を指定する場合
+flutter run -d <デバイスID>
+
+# リリース APK をビルドする場合
+flutter build apk
+
+# App Bundle（Google Play 配布用）をビルドする場合
+flutter build appbundle
+```
+
+実機で起動する場合は、端末側で **USB デバッグ** を有効にしてください。
 
 ## 動作環境
 
