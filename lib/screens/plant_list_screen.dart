@@ -89,21 +89,28 @@ class _PlantListScreenState extends ConsumerState<PlantListScreen> {
           Expanded(
             child: plants.isEmpty
                 ? _buildEmptyState()
-                : GridView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.72,
-                      crossAxisSpacing: 12,
-                      mainAxisSpacing: 12,
-                    ),
-                    itemCount: plants.length,
-                    itemBuilder: (context, index) {
-                      final plant = plants[index];
-                      return PlantCard(
-                        plant: plant,
-                        onTap: () => _navigateToDetail(plant),
+                : LayoutBuilder(
+                    builder: (context, constraints) {
+                      // 画面幅に応じて列数を動的に決定（モバイルは2列のまま）
+                      final crossAxisCount =
+                          (constraints.maxWidth / 200).floor().clamp(2, 6);
+                      return GridView.builder(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        gridDelegate:
+                            SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: crossAxisCount,
+                          childAspectRatio: 0.72,
+                          crossAxisSpacing: 12,
+                          mainAxisSpacing: 12,
+                        ),
+                        itemCount: plants.length,
+                        itemBuilder: (context, index) {
+                          final plant = plants[index];
+                          return PlantCard(
+                            plant: plant,
+                            onTap: () => _navigateToDetail(plant),
+                          );
+                        },
                       );
                     },
                   ),
